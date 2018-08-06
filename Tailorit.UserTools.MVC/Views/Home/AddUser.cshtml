@@ -1,0 +1,72 @@
+﻿
+@{
+    ViewData["Title"] = "AddUser";
+}
+
+@model UserViewModel
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+
+
+<form asp-controller="Home" asp-action="AddUser">
+
+    <br/>
+ 
+    <div class="form-group">
+
+        <div class="form-group">
+            @Html.LabelFor(c => c.Name)
+            @Html.TextBoxFor(c => c.Name, new { @class = "form-control" })
+            @Html.ValidationMessageFor(c => c.Name, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(c => c.BirthDate)
+            @Html.TextBoxFor(c => c.BirthDate, new { @class = "form-control", @type = "date" })
+            @Html.ValidationMessageFor(c => c.BirthDate, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(c => c.Email)
+            @Html.TextBoxFor(c => c.Email, new { @class = "form-control" })
+            @Html.ValidationMessageFor(c => c.Email, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group ">
+            @Html.LabelFor(c => c.DescriptionSexo)
+            @Html.DropDownList("idSexo", (IEnumerable<SelectListItem>)ViewBag.Sexo, new { id = "idSexo", @class = "form-control" })
+        
+            </div>
+
+        <div class="form-group">
+            @Html.LabelFor(c => c.DescriptionActive)
+            @Html.CheckBoxFor(c => c.Active )
+            @Html.ValidationMessageFor(c => c.Active, "", new { @class = "text-danger" })
+        </div>
+
+
+        <div class="form-group col-lg-6">
+            @Html.LabelFor(c => c.Password)
+            @Html.TextBoxFor(c => c.Password, new { @class = "form-control", @type = "password" })
+            @Html.ValidationMessageFor(c => c.Password, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group col-lg-6">
+            @Html.LabelFor(c => c.ConfirmPassword)
+            @Html.TextBoxFor(c => c.ConfirmPassword, new { @class = "form-control", @type = "password" })
+            @Html.ValidationMessageFor(c => c.ConfirmPassword, "", new { @class = "text-danger" })
+
+            @if (ViewBag.ErrorPassword != null)
+            {
+                <label class="text-danger"> @ViewBag.ErrorPassword</label>
+            }
+        </div>
+        
+        <br />
+        <div class="form-group">
+            <input type="submit" value="Salvar" formaction="/usuario/novoUsuario" formmethod="post" class="btn btn-primary" />
+        </div>
+
+    </div>
+</form>

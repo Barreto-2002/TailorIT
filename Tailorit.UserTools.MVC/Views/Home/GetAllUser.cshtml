@@ -1,0 +1,63 @@
+﻿@model IEnumerable<UserViewModel>
+
+
+
+
+@{
+    ViewData["Title"] = "GetAllUser";
+}
+
+<h2>GetAllUser</h2>
+
+<form>
+
+    <div class="form-inline">
+        <div class="form-group">
+            <label>Nome</label>
+            <input type="text" name="name" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label>Ativo</label>
+            <select class="form-control" name="ativo">
+                <option selected="selected"></option>
+                <option value="1">Sim</option>
+                <option value="2">Não</option>
+            </select>
+
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Filtrar" formaction="/usuario/lista" formmethod="post" class="btn btn-primary" />
+        </div>
+    </div>
+
+    <br />
+    <hr />
+    <br />
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Data Nascimento</th>
+                <th>Email</th>
+                <th>Sexo</th>
+                <th>Ativo</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var c in Model)
+            {
+                <tr>
+                    <th>@c.Name</th>
+                    <th>@c.BirthDate</th>
+                    <th>@c.Email</th>
+                    <th>@c.DescriptionSexo</th>
+                    <th>@c.DescriptionActive</th>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</form>
+
+
