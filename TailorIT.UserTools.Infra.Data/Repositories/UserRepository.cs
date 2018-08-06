@@ -15,12 +15,26 @@ namespace TailorIT.UserTools.Infra.Data.Repositories
 
         public IList<User> GetAllUsers()
         {
-            return _tailorIt.Users.ToList();
+            return _tailorIt.Users.Select(c => new User()
+            {
+                Name = c.Name,
+                BirthDate = c.BirthDate,
+                Email = c.Email,
+                Active = c.Active,
+                Sexo = c.Sexo
+            }).ToList();
         }
 
         public IList<User> GetUserbyName(string userName, bool active)
         {
-            return _tailorIt.Users.Where(c=> c.Active == active && c.Name == userName).ToList();
+            return _tailorIt.Users.Select(c => new User()
+            {
+                Name = c.Name,
+                BirthDate = c.BirthDate,
+                Email = c.Email,
+                Active = c.Active,
+                Sexo = c.Sexo
+            }).Where(c => c.Active == active || c.Name == userName).ToList();
         }
 
         public void AddUser(User user)

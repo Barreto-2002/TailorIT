@@ -26,9 +26,8 @@ namespace Tailorit.UserTools.MVC.Controllers
                 Name = c.Name,
                 BirthDate = c.BirthDate,
                 Email = c.Email,
-               // DescriptionSexo = c.IdSexo == 1 ? "Masculino" : "Feminino",
+                DescriptionSexo = c.Sexo.Description,
                 DescriptionActive = c.Active ? "Sim" : "Não"
-
             });
 
             return View(users);
@@ -42,7 +41,7 @@ namespace Tailorit.UserTools.MVC.Controllers
                 Name = c.Name,
                 BirthDate = c.BirthDate,
                 Email = c.Email,
-               // DescriptionSexo = c.IdSexo == 1 ? "Masculino" : "Feminino",
+                DescriptionSexo = c.Sexo.Description,
                 DescriptionActive = c.Active ? "Sim" : "Não"
 
             });
@@ -70,9 +69,9 @@ namespace Tailorit.UserTools.MVC.Controllers
                         Name = user.Name,
                         BirthDate = user.BirthDate,
                         Email = user.Email,
-                       // IdSexo = user.IdSexo,
+                        IdSexo = user.IdSexo,
                         Active = user.Active,
-                        Senha = user.Password
+                        Senha = EncryptionPassword.Encrypt(user.Password)
 
                     });
 
@@ -83,7 +82,7 @@ namespace Tailorit.UserTools.MVC.Controllers
                 ViewBag.Sexo = new SelectList(Constants.Sexo(), "IdSexo", "DescriptionSexo");
             }
 
-            return  View(nameof(AddUser));
+            return View(nameof(AddUser));
         }
 
         public IActionResult Error()

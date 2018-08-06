@@ -28,13 +28,14 @@
             </div>
         </div>
     </nav>
-    <div class="container body-content navbar-fixed-bottom">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; 2018 - Tailorit.UserTools.MVC</p>
-        </footer>
-    </div>
+<div class="container body-content">
+    <br />
+    @RenderBody()
+    <hr/>
+    <footer class="navbar-fixed-bottom">
+        <p>&copy; 2018 - Tailorit.UserTools.MVC</p>
+    </footer>
+</div>
 
     <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
